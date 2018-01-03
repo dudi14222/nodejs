@@ -1,22 +1,10 @@
+const controllerHandler = require('./controllerHandler')
 const express = require('express')
     , router = express.Router()
     , Quiz = require('../models/quiz')
 
-router.get('/', async (req, res) => {
-    try {
-        const quizzes = await Quiz.all();
-        res.json(quizzes);
-    }
-    catch (error) {
-        return res.json({ok: false});
-    }
-    // Quiz.all()
-    //     .then(quizzes => res.json(quizzes))
-    //     .catch(err => res.json({ ok: false }))
-})
+router.get('/', controllerHandler(Quiz.all, (req, res, next) => []))
 
-router.get('/:id', function (req, res) {
-    res.json({ ok: true, id: req.params.id });
-})
+router.get('/:id', controllerHandler(Quiz.getById, (req, res, next) => [req.param._id]))
 
 module.exports = router

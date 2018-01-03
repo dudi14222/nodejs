@@ -1,17 +1,10 @@
-const mongoDB = require('../helpers/db')
+const quizService = require('../dbServices/quizService')
+
 exports.all = () => {
-  return new Promise((resolve, reject) => {
-    const quizzes = mongoDB.db.collection("quizzes");
-    quizzes.find({}).toArray(function (err, result) {      
-      if (err)
-        reject(err);
-      else
-        resolve(result);
-    });
-  })
+  return quizService.all();
 }
 
-exports.get = function (id, cb) {
-  cb(null, { id: id, text: 'Very nice example' })
+exports.getById = (id) => {
+  return quizService.getById(id);
 }
 
