@@ -2,10 +2,21 @@ const ApiError = require('../helpers/apiError')
 const mongoDB = require('../helpers/db')
 const dbUtils = require('../helpers/dbUtils')
 
-exports.all = (collectionName) => {
+exports.findAll = (collectionName) => {
     const collection = mongoDB.db.collection(collectionName);
-    return collection.find({}).toArray()
+    return collection.find({}).toArray();
 }
+
+exports.findByConditions = (collectionName, conditions) => {
+    const collection = mongoDB.db.collection(collectionName);
+    return collection.find(conditions).toArray();
+}
+
+exports.insertMany = (collectionName, docs) => {
+    const collection = mongoDB.db.collection(collectionName);
+    return collection.insertMany(docs);
+}
+
 
 exports.getById = (collectionName, id) => {
     const collection = mongoDB.db.collection(collectionName);

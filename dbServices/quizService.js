@@ -2,7 +2,7 @@ const mongoService = require('./mongoService')
 const collection = "quizzes";
 
 exports.all = () => {
-    return mongoService.all(collection);    
+    return mongoService.findAll(collection);    
 }
 
 exports.getById = (id) => {
