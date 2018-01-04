@@ -5,6 +5,6 @@ const express = require('express')
 
 router.get('/', controllerHandler(Quiz.all, (req, res, next) => []))
 
-router.get('/:id', controllerHandler(Quiz.getById, (req, res, next) => [req.param._id]))
+router.get('/:id', controllerHandler(Quiz.getById, (req, res, next) => [req.params.id]))
 
 module.exports = router

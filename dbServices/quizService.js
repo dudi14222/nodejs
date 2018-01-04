@@ -1,11 +1,10 @@
-const mongoDB = require('../helpers/db')
+const mongoService = require('./mongoService')
+const collection = "quizzes";
 
-exports.all = () => {     
-      const quizzes = mongoDB.db.collection("quizzes");
-      return quizzes.find({}).toArray()
-  }
+exports.all = () => {
+    return mongoService.all(collection);    
+}
 
-exports.getById = (o_id) => {     
-    const quizzes = mongoDB.db.collection("quizzes");
-    return quizzes.find({ObjectId(...o_id)})
+exports.getById = (id) => {
+    return mongoService.getById(collection, id);    
 }
