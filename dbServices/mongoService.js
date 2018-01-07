@@ -12,6 +12,11 @@ exports.findByConditions = (collectionName, conditions) => {
     return collection.find(conditions).toArray();
 }
 
+exports.findOneAndUpdate = (collectionName, filter, update, options) => {
+    const collection = mongoDB.db.collection(collectionName);
+    return collection.findOneAndUpdate(filter, update, options);
+}
+
 exports.insertMany = (collectionName, docs) => {
     const collection = mongoDB.db.collection(collectionName);
     return collection.insertMany(docs);

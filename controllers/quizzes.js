@@ -8,6 +8,8 @@ router.get('/', controllerHandler(Quiz.all, (req, res, next) => []))
 
 router.get('/:id', controllerHandler(Quiz.getById, (req, res, next) => [req.params.id]))
 
+router.patch('/:id', controllerHandler(Quiz.updateQuizResults, (req, res, next) => [req.params.id, req.body.score]))
+
 router.get('/:id/questions', controllerHandler(Question.getByQuizId, (req, res, next) => [req.params.id]))
 
 module.exports = router

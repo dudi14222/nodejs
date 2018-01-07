@@ -1,4 +1,6 @@
+
 const mongoService = require('./mongoService')
+const dbUtils = require('../helpers/dbUtils')
 const collection = "quizzes";
 
 exports.all = () => {
@@ -7,4 +9,10 @@ exports.all = () => {
 
 exports.getById = (id) => {
     return mongoService.getById(collection, id);    
+}
+
+exports.updateQuizResults = (id, score) => {
+    const filter = { _id: dbUtils.stringToObjectId(id) };
+    const update = { $inc: { aggregatedScore: score, gameCounter: 1 } };
+    return mongoService.findOneAndUpdate(collection, filter, update, {});   
 }
