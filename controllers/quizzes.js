@@ -12,4 +12,6 @@ router.patch('/:id', controllerHandler(Quiz.updateQuizResults, (req, res, next) 
 
 router.get('/:id/questions', controllerHandler(Question.getByQuizId, (req, res, next) => [req.params.id]))
 
+router.post('/', controllerHandler(Quiz.create, (req, res, next) => [req.body]))
+
 module.exports = router

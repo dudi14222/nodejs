@@ -12,4 +12,8 @@ exports.updateQuizResults = (id, score) => {
   return quizService.updateQuizResults(id, score);
 }
 
+exports.create = (docs) => {
+  return quizService.create(docs);
+}
+
 

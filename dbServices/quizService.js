@@ -16,3 +16,7 @@ exports.updateQuizResults = (id, score) => {
     const update = { $inc: { aggregatedScore: score, gameCounter: 1 } };
     return mongoService.findOneAndUpdate(collection, filter, update, {});   
 }
+
+exports.create = (docs) => {
+    return mongoService.insertMany(collection, docs);    
+}
