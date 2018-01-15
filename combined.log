@@ -1,0 +1,5 @@
+{"message":"Listening on port 3001","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"::1 - - [14/Jan/2018:18:05:38 +0000] \"GET /quizzes HTTP/1.1\" 200 389 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [14/Jan/2018:18:05:38 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://localhost:3001/quizzes\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [14/Jan/2018:18:05:50 +0000] \"GET /quizzes HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36\"\n","level":"info"}

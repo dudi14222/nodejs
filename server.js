@@ -1,5 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
-const mongoDB = require('./helpers/db')
+const dataBaseService = require('./helpers/db')
 const logger = require('./log')
 const config = require('./config')
 
@@ -51,13 +50,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(require('./controllers'))
 
 
-MongoClient.connect(config.database.url, function (err, client) {
-  if (err) {
-    mainLogger.error(err) // exit ?
-  }
-  mongoDB.db = client.db(config.database.dbName);
-  app.listen(port, function () {
-    mainLogger.info('Listening on port ' + port)
+dataBaseService.connect()
+  .then(() => {
+    app.listen(port,  () => {
+      mainLogger.info('Listening on port ' + port)
+    })
   })
-});
+  .catch((err => {
+    mainLogger.error(err) // exit ?
+  }))
 
