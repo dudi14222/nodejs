@@ -57,6 +57,6 @@ dataBaseService.connect()
     })
   })
   .catch((err => {
-    mainLogger.error(err) // exit ?
+    mainLogger.error(err)
   }))
 
