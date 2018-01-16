@@ -11,10 +11,11 @@ class DbClient {
                 resolve();
             })
         return new Promise((resolve, reject) => {
-            MongoClient.connect(config.database.url, (err, client) => {
+            MongoClient.connect(config.database.url, (err, client) => {                
                 if (err) {
                     reject(err);
-                }
+                    return;
+                }               
                 this._db = client.db(config.database.dbName);
                 resolve();
             });

@@ -3,3 +3,18 @@
 {"message":"::1 - - [14/Jan/2018:18:05:38 +0000] \"GET /quizzes HTTP/1.1\" 200 389 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36\"\n","level":"info"}
 {"message":"::1 - - [14/Jan/2018:18:05:38 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://localhost:3001/quizzes\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36\"\n","level":"info"}
 {"message":"::1 - - [14/Jan/2018:18:05:50 +0000] \"GET /quizzes HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36\"\n","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"::1 - - [15/Jan/2018:16:55:45 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [15/Jan/2018:16:55:46 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://localhost:3001/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [15/Jan/2018:16:55:53 +0000] \"GET /quizzes HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [192.168.10.85:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.10.85:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [192.168.10.85:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.10.85:27017]","level":"error"}
+{"message":"Listening on port 3001","level":"info"}
+{"name":"MongoNetworkError","message":"failed to connect to server [mongo:27017] on first connect [MongoNetworkError: getaddrinfo ENOTFOUND mongo mongo:27017]","level":"error"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"::1 - - [16/Jan/2018:07:39:16 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
+{"message":"::1 - - [16/Jan/2018:07:39:22 +0000] \"GET /quizzes HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}

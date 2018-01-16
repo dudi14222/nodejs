@@ -1,0 +1,7 @@
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"message":{},"level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [192.168.10.85:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.10.85:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [192.168.10.85:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.10.85:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [mongo:27017] on first connect [MongoNetworkError: getaddrinfo ENOTFOUND mongo mongo:27017]","level":"error"}
