@@ -1,4 +1,3 @@
-
 const mongoService = require('./mongoService')
 const dbUtils = require('../helpers/dbUtils')
 const collection = "quizzes";

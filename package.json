@@ -1,8 +1,8 @@
 {
   "name": "quiz-app",
-  "version": "1.0.1",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "demo quiz app",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
