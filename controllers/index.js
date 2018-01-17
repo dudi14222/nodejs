@@ -3,6 +3,7 @@ const logger = require('../log');
 const express = require('express')
   , router = express.Router()
 
+router.use('/setup', require('./setup'))  
 router.use('/quizzes', require('./quizzes'))
 router.use('/questions', require('./questions'))
 

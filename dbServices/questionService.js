@@ -13,3 +13,7 @@ exports.getById = (id) => {
 exports.create = (docs) => {
     return mongoService.insertMany(collection, dbUtils.changeStringIDToObjectId(docs, 'quiz_id'));    
 }
+
+exports.all = () => {
+    return mongoService.findAll(collection);    
+}

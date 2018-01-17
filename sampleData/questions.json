@@ -1,0 +1,78 @@
+{
+    "sport": [
+        {
+            "answers": [
+                "Tennis",
+                "Boxing",
+                "Skiing",
+                "Baseball"
+            ],
+            "correctAnswerIndex": 0,
+            "questionText": "For which sport is Serena Williams famous for?"
+        },
+        {
+            "answers": [
+                "Kirani James",
+                "Usain Bolt",
+                "Andre De Grasse",
+                "Taoufik Makhloufi"
+            ],
+            "correctAnswerIndex": 1,
+            "questionText": "In the Summer Olympic Games of 2016, who won the men's 100 meters run gold medal?"
+        }
+    ],
+    "music": [
+        {
+            "questionText": "John Lennon was part of which band?",
+            "answers": [
+                "The Rolling Stones",
+                "The Monkeys",
+                "The Beatles",
+                "R.E.M."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "questionText": "Which band is the most commercially successful band in the history of popular music?",
+            "answers": [
+                "Coldplay",
+                "The Monkeys",
+                "The Beatles",
+                "R.E.M."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "questionText": "When did The Rolling Stones band form?",
+            "answers": [
+                "1962",
+                "1949",
+                "1972",
+                "1980"
+            ],
+            "correctAnswerIndex": 0
+        }
+    ],
+    "history": [
+        {
+            "questionText": "When did Christopher Columbus set on his famous journey?",
+            "answers": [
+                "1962",
+                "1650",
+                "1492",
+                "1211"
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "questionText": "When did India declare its independence from Britain?",
+            "answers": [
+                "1947",
+                "1957",
+                "1967",
+                "1977"
+            ],
+            "correctAnswerIndex": 0
+        }
+    ]
+}

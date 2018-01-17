@@ -1,6 +1,5 @@
 const dataBaseService = require('./helpers/db')
 const logger = require('./log')
-const config = require('./config')
 
 
 const express = require('express')
