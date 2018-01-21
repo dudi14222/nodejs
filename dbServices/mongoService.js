@@ -41,3 +41,8 @@ exports.getById = (collectionName, id) => {
         });
     })
 }
+
+exports.drop = (collectionName) => {
+    const collection = mongoDB.db.collection(collectionName);
+    return collection.drop();
+}

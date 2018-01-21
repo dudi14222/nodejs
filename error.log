@@ -13,3 +13,8 @@
 {"message":"Unexpected error exception: TypeError: Cannot read property 'then' of undefined","level":"error"}
 {"message":"Unexpected error exception: TypeError: Cannot read property 'then' of undefined","level":"error"}
 {"message":"Unexpected error exception: TypeError: Cannot read property 'then' of undefined","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [docker.for.windows.localhost:27017] on first connect [MongoNetworkError: getaddrinfo ENOTFOUND docker.for.windows.localhost docker.for.windows.localhost:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [0.0.0.0:27017] on first connect [MongoNetworkError: connect EADDRNOTAVAIL 0.0.0.0:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [localhost:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [0.0.0.0:27017] on first connect [MongoNetworkError: connect EADDRNOTAVAIL 0.0.0.0:27017]","level":"error"}
+{"name":"MongoNetworkError","message":"failed to connect to server [0.0.0.0:27017] on first connect [MongoNetworkError: connect EADDRNOTAVAIL 0.0.0.0:27017]","level":"error"}

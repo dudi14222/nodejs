@@ -19,3 +19,7 @@ exports.updateQuizResults = (id, score) => {
 exports.create = (docs) => {
     return mongoService.insertMany(collection, docs);    
 }
+
+exports.drop = () => {
+    return mongoService.drop(collection);
+}

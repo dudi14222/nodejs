@@ -38,57 +38,88 @@ isQuestionExist = (questions, questionText) => {
   return false;
 }
 
-exports.init = () => {
+initDBData = (clearData) => {
+  return new Promise((resolve, reject) => {
+    try {
+      clearDbData(clearData)
+        .then(res => {
+          quizService.all()
+            .then(quizzesFromDb => {
+              const filteredQuizzes = quizzesJson.filter(q => !isQuizExist(quizzesFromDb, q.name));
+              if (filteredQuizzes.length === 0) {
+                isInsertStart = false;
+                resolve('there aren\'t new quizzes to insert')
+                return;
+              }
+              quizService.create(filteredQuizzes)
+                .then(res => {
+                  const insertedArray = res.ops;
+                  questionService.all()
+                    .then(questionsFromDb => {
+                      let filteredQuestionsWithQuizId = [];
+                      for (let quiz of Object.keys(questionsJson)) {
+                        let filteredQuestions = questionsJson[quiz].filter(q => !isQuestionExist(questionsFromDb, q.questionText));
+                        filteredQuestionsWithQuizId.push(...insertQuizId(filteredQuestions, getQuizIdByName([...insertedArray, ...quizzesFromDb], quiz)));
+                      }
+
+                      questionService.create(filteredQuestionsWithQuizId)
+                        .then(res => {
+                          resolve(res)
+                        })
+                        .catch(error => {
+                          reject(error)
+                        })
+
+                    })
+                    .catch(error => {
+                      reject(error)
+                    })
+                })
+                .catch(error => {
+                  reject(error);
+                })
+            })
+            .catch(error => {
+              reject(error);
+            })
+
+        })
+        .catch (e=>{
+          reject(error);
+        })
+    }
+    catch (e) {
+      reject(e);
+    }
+  }
+  )
+}
+
+clearDbData = (clearData) => {
+  if(clearData === 'true')
+    return Promise.all([quizService.drop(), questionService.drop()])
+  
+  return Promise.resolve();  
+}
+
+exports.init = (clearData) => {
   return new Promise((resolve, reject) => {
     if (isInsertStart) {
-      throw new ApiError('setup already started')
+      reject('setup already started')
+      return;
     }
-    else {
-      isInsertStart = true;
-    }
-    quizService.all()
-      .then(quizzesFromDb => {
-        const filteredQuizzes = quizzesJson.filter(q => !isQuizExist(quizzesFromDb, q.name));
-        if(filteredQuizzes.length === 0){
-          resolve('there aren\'t new quizzes to insert')
-          return;
-        }
-        quizService.create(filteredQuizzes)
-          .then(res => {
-            const insertedArray = res.ops;
-            questionService.all()
-              .then(questionsFromDb => {
-                let filteredQuestionsWithQuizId = [];
-                for (let quiz of Object.keys(questionsJson)) {
-                  let filteredQuestions = questionsJson[quiz].filter(q => !isQuestionExist(questionsFromDb, q.questionText));
-                  filteredQuestionsWithQuizId.push(...insertQuizId(filteredQuestions, getQuizIdByName([...insertedArray, ...quizzesFromDb], quiz)));
-                }
-
-                questionService.create(filteredQuestionsWithQuizId)
-                  .then(res => (
-                    resolve(res)
-                  ))
-                  .catch(error => (
-                    reject(error)
-                  ))
-
-              })
-              .catch(error => (
-                reject(error)
-              ))
-          })
-          .catch(error => {
-            reject(error);
-          })
+    isInsertStart = true;
+    initDBData(clearData)
+      .then(res => {
+        resolve(res);
       })
       .catch(error => {
-        reject(error);
+        reject(error)
       })
-      .then(() => (
-        isInsertStart = false
-      ))
+      .then(() => {
+        isInsertStart = false;
+      })
   })
-
 }
 
 
