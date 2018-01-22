@@ -1,11 +1,10 @@
 const ApiError = require('../helpers/apiError')
 const fs = require('fs');
-const quizzesJson = JSON.parse(fs.readFileSync('./sampleData/quizzes.json', 'utf8'));
-const questionsJson = JSON.parse(fs.readFileSync('./sampleData/questions.json', 'utf8'));
+const jsonData = JSON.parse(fs.readFileSync('./sampleData/data.json', 'utf8'));
 
 const quizService = require('../dbServices/quizService')
 const questionService = require('../dbServices/questionService')
-let isInsertStart = false;
+let isInitStart = false;
 
 insertQuizId = (questions, id) => {
   return questions.map(q => {
@@ -45,9 +44,11 @@ initDBData = (clearData) => {
         .then(res => {
           quizService.all()
             .then(quizzesFromDb => {
-              const filteredQuizzes = quizzesJson.filter(q => !isQuizExist(quizzesFromDb, q.name));
+              const quizzesFromJson = jsonData.map(data => {
+                return data.quiz;
+              })
+              const filteredQuizzes = quizzesFromJson.filter(q => !isQuizExist(quizzesFromDb, q.name));
               if (filteredQuizzes.length === 0) {
-                isInsertStart = false;
                 resolve('there aren\'t new quizzes to insert')
                 return;
               }
@@ -57,9 +58,11 @@ initDBData = (clearData) => {
                   questionService.all()
                     .then(questionsFromDb => {
                       let filteredQuestionsWithQuizId = [];
-                      for (let quiz of Object.keys(questionsJson)) {
-                        let filteredQuestions = questionsJson[quiz].filter(q => !isQuestionExist(questionsFromDb, q.questionText));
-                        filteredQuestionsWithQuizId.push(...insertQuizId(filteredQuestions, getQuizIdByName([...insertedArray, ...quizzesFromDb], quiz)));
+                      for (let quizData of jsonData) {
+                        if (quizData.questions) {
+                          let filteredQuestions = quizData.questions.filter(q => !isQuestionExist(questionsFromDb, q.questionText));
+                          filteredQuestionsWithQuizId.push(...insertQuizId(filteredQuestions, getQuizIdByName([...insertedArray, ...quizzesFromDb], quizData.quiz.name)));
+                        }
                       }
 
                       questionService.create(filteredQuestionsWithQuizId)
@@ -84,7 +87,7 @@ initDBData = (clearData) => {
             })
 
         })
-        .catch (e=>{
+        .catch(e => {
           reject(error);
         })
     }
@@ -96,19 +99,19 @@ initDBData = (clearData) => {
 }
 
 clearDbData = (clearData) => {
-  if(clearData === 'true')
+  if (clearData === 'true')
     return Promise.all([quizService.drop(), questionService.drop()])
-  
-  return Promise.resolve();  
+
+  return Promise.resolve();
 }
 
 exports.init = (clearData) => {
   return new Promise((resolve, reject) => {
-    if (isInsertStart) {
+    if (isInitStart) {
       reject('setup already started')
       return;
     }
-    isInsertStart = true;
+    isInitStart = true;
     initDBData(clearData)
       .then(res => {
         resolve(res);
@@ -117,7 +120,7 @@ exports.init = (clearData) => {
         reject(error)
       })
       .then(() => {
-        isInsertStart = false;
+        isInitStart = false;
       })
   })
 }

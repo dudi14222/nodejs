@@ -221,3 +221,8 @@
 {"message":"::1 - - [21/Jan/2018:13:06:46 +0000] \"GET /setup?clear=false HTTP/1.1\" 200 2631 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
 {"message":"::1 - - [21/Jan/2018:13:07:09 +0000] \"GET /setup?clear=false HTTP/1.1\" 200 36 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
 {"message":"::1 - - [21/Jan/2018:13:07:25 +0000] \"GET /setup?clear=true HTTP/1.1\" 200 2631 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\"\n","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
+{"message":"Listening on port 3001","level":"info"}
