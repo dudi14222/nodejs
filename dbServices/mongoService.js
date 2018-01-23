@@ -44,5 +44,15 @@ exports.getById = (collectionName, id) => {
 
 exports.drop = (collectionName) => {
     const collection = mongoDB.db.collection(collectionName);
-    return collection.drop();
+    return new Promise((resolve, reject)=>{
+        collection.drop((err, res)=>{            
+                if(err)
+                {
+                    reject(err);
+                }
+                else{
+                    resolve(res);
+                }
+            })
+    });
 }

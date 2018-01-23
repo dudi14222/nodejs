@@ -1,5 +1,8 @@
-const MongoClient = require('mongodb').MongoClient;
 const config = require('../config')
+const isMockDB = config.database.mongoMock;
+const mongoDb = isMockDB ? require('mongo-mock'):require('mongodb')
+const mongoClient = mongoDb.MongoClient;
+
 class DbClient {
     constructor() {
         this._db = null
@@ -10,13 +13,17 @@ class DbClient {
             return new Promise((resolve, reject) => {
                 resolve();
             })
-        return new Promise((resolve, reject) => {
-            MongoClient.connect(config.database.url, (err, client) => {                
+        return new Promise((resolve, reject) => {            
+            if(isMockDB){                
+                mongoClient.persist="mongo.js";
+            }   
+
+            mongoClient.connect(config.database.url, (err, client) => {                
                 if (err) {
                     reject(err);
                     return;
                 }               
-                this._db = client.db(config.database.dbName);
+                this._db = isMockDB ? client:client.db(config.database.dbName);
                 resolve();
             });
         })
@@ -25,7 +32,12 @@ class DbClient {
     get db(){
         return this._db;
     }
+
+    get mongoDB(){
+        return mongoDb;
+    }
 }
 
 const databaseService = new DbClient();
 module.exports = databaseService;
+
