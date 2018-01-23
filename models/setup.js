@@ -87,7 +87,7 @@ initDBData = (clearData) => {
             })
 
         })
-        .catch(e => {
+        .catch(error => {
           reject(error);
         })
     }

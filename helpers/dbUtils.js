@@ -1,4 +1,5 @@
-const ObjectId = require('mongodb').ObjectId; 
+const dataBaseService = require('./db')
+let ObjectId = dataBaseService.mongoDB.ObjectId; 
 
 exports.stringToObjectId = (id) => {
     return new ObjectId(id);
@@ -13,4 +14,5 @@ exports.stringIDToObjectId = (arr, filedName) => {
         return o;
     })
 }
+
 
