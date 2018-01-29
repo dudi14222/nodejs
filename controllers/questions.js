@@ -1,7 +1,11 @@
+const config = require('../config')
+const isMockDB = config.database.mongoMock;
 const controllerHandler = require('./controllerHandler')
 const express = require('express')
     , router = express.Router()
-    , Question = require('../models/question')
+    , Question = isMockDB ? require('../models/questionSimulator'):require('../models/question')
+
+router.get('/', controllerHandler(Question.all, (req, res, next) => []))
 
 router.get('/:id', controllerHandler(Question.getById, (req, res, next) => [req.params.id]))
 

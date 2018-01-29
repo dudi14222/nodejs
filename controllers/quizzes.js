@@ -1,8 +1,10 @@
+const config = require('../config')
+const isMockDB = config.database.mongoMock;
 const controllerHandler = require('./controllerHandler')
 const express = require('express')
     , router = express.Router()
-    , Quiz = require('../models/quiz')
-    , Question = require('../models/question')
+    , Quiz = isMockDB?  require('../models/quizSimulator'):require('../models/quiz')
+    , Question = isMockDB ? require('../models/questionSimulator'):require('../models/question')
 
 router.get('/', controllerHandler(Quiz.all, (req, res, next) => []))
 

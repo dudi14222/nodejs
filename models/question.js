@@ -1,5 +1,10 @@
 const questionService = require('../dbServices/questionService')
 
+exports.all = () => {
+  return questionService.all();
+}
+
+
 exports.getByQuizId = (quizId) => {
   return questionService.getByQuizId(quizId);
 }
